@@ -4,3 +4,6 @@
 ^project.*\.tar\.gz$
 ^project.*\.tgz$
 ^LICENSE\.md$
+^openpoweRlifting\.Rcheck$
+^openpoweRlifting.*\.tar\.gz$
+^openpoweRlifting.*\.tgz$

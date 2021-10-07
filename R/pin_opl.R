@@ -33,7 +33,8 @@ pin_opl =   function(board, ipf = TRUE, name = NULL){
   utils::unzip(zip_path)
 
   opl = list.files(pattern = "csv$", recursive = T) %>%
-    readr::read_csv(col_types = "cfcfnfffnnnnnnnnnnnnnnnncnnnnf") #more-or-less the colspec we want...
+    readr::read_csv(col_types = "cfcfnfffnfnnnnnnnnnnnnnnnnfnnnnfffffDffff") %>% #more-or-less the colspec we want...
+    janitor::clean_names()
 
   setwd(oldwd) #return to actual working directory.
 
