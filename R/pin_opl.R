@@ -30,7 +30,7 @@ pin_opl =   function(board, ipf = TRUE, name = NULL){
 
   oldwd = getwd() #Move to tempdir to work with the zip files
   setwd(tempdir())
-  unzip(zip_path)
+  utils::unzip(zip_path)
 
   opl = list.files(pattern = "csv$", recursive = T) %>%
     readr::read_csv(col_types = "cfcfnfffnnnnnnnnnnnnnnnncnnnnf") #more-or-less the colspec we want...
