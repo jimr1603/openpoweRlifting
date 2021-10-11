@@ -9,7 +9,7 @@
 #' @return Same as pin_write
 #' @export
 #'
-pin_opl =   function(board, ipf = TRUE, name = NULL){
+pin_opl =   function(board = pins::board_local(), ipf = TRUE, name = NULL){
 
   #handle pin name, with defaults if not supplied
   name = ifelse(is.null(name), ifelse(ipf, "opl-ipf", "opl-all"))
