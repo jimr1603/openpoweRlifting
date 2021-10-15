@@ -44,3 +44,6 @@ project*.tgz
 openpoweRlifting.Rcheck/
 openpoweRlifting*.tar.gz
 openpoweRlifting*.tgz
+inst/doc
+/doc/
+/Meta/

@@ -9,7 +9,7 @@
 #' @return Same as pin_write
 #' @export
 #'
-pin_opl =   function(board, ipf = TRUE, name = NULL){
+pin_opl =   function(board = pins::board_local(), ipf = TRUE, name = NULL){
 
   #handle pin name, with defaults if not supplied
   name = ifelse(is.null(name), ifelse(ipf, "opl-ipf", "opl-all"))
@@ -24,7 +24,7 @@ pin_opl =   function(board, ipf = TRUE, name = NULL){
 
   zip_path = ifelse(ipf, #Cache the zip from the website.
     pins::pin_download(opl, "open_ipf"),
-    pins::pin_download(opl, "open_ipf"))
+    pins::pin_download(opl, "opl"))
 
 
 

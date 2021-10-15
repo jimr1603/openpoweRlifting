@@ -16,3 +16,7 @@ Imports:
     pins,
     readr,
     utils
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
