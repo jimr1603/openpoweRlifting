@@ -5,7 +5,7 @@
 \title{Utility function to pin the csv of the latest OpenPowerLifting data
 with the Pins 1.0.0 API.}
 \usage{
-pin_opl(board, ipf = TRUE, name = NULL)
+pin_opl(board = pins::board_local(), ipf = TRUE, name = NULL)
 }
 \arguments{
 \item{board}{the Board object from {pins} to attach the data to}

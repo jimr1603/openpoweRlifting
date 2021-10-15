@@ -24,7 +24,7 @@ pin_opl =   function(board = pins::board_local(), ipf = TRUE, name = NULL){
 
   zip_path = ifelse(ipf, #Cache the zip from the website.
     pins::pin_download(opl, "open_ipf"),
-    pins::pin_download(opl, "open_ipf"))
+    pins::pin_download(opl, "opl"))
 
 
 

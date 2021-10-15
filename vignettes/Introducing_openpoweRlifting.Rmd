@@ -35,9 +35,23 @@ You can then read the data with `pin_read(board_local(), "opl-ipf")`.
 By means of example, I'll find the max totals for each equipment class:
 
 ```{r}
-#pin_opl()
+pin_opl()
 
 pin_read(board_local(), "opl-ipf") %>%
+  dplyr::group_by(equipment) %>%
+  dplyr::slice_max(n=1, order_by=total_kg) %>%
+  dplyr::ungroup() %>%
+  knitr::kable()
+```
+
+## The complete dataset
+
+We can download the full dataset with `ipf = FALSE`, and reading the `"opl-all"` pin. 
+
+```{r}
+pin_opl(ipf = FALSE)
+
+pin_read(board_local(), "opl-all") %>%
   dplyr::group_by(equipment) %>%
   dplyr::slice_max(n=1, order_by=total_kg) %>%
   dplyr::ungroup() %>%
