@@ -1,7 +1,7 @@
 ---
 title: "Introducing openpoweRlifting"
 output: rmarkdown::html_vignette
-date: "2021-10-11"
+date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{Introducing_openpoweRlifting}
   %\VignetteEngine{knitr::rmarkdown}
@@ -35,7 +35,7 @@ You can then read the data with `pin_read(board_local(), "opl-ipf")`.
 By means of example, I'll find the max totals for each equipment class:
 
 ```{r}
-pin_opl()
+#pin_opl()
 
 pin_read(board_local(), "opl-ipf") %>%
   dplyr::group_by(equipment) %>%
@@ -49,7 +49,7 @@ pin_read(board_local(), "opl-ipf") %>%
 We can download the full dataset with `ipf = FALSE`, and reading the `"opl-all"` pin. 
 
 ```{r}
-pin_opl(ipf = FALSE)
+#pin_opl(ipf = FALSE)
 
 pin_read(board_local(), "opl-all") %>%
   dplyr::group_by(equipment) %>%
