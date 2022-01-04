@@ -7,3 +7,5 @@
 ^openpoweRlifting\.Rcheck$
 ^openpoweRlifting.*\.tar\.gz$
 ^openpoweRlifting.*\.tgz$
+^doc$
+^Meta$
