@@ -25,16 +25,18 @@ openpoweRifting is a library that handles keeping an up-to-date copy of the [Ope
 It achieves this with the [pins](https://cran.r-project.org/web/packages/pins/index.html) library, and we would encourage you to read the [intro to pins vignette](https://cran.r-project.org/web/packages/pins/vignettes/pins.html). 
 
 # Examples
-
 openpoweRlifting has 2 functions - `pin_opl_ipf` and `pin_opl_full`. 
 By default the `pin_opl_ipf` function will grab the [nightly IFP dataset](https://openpowerlifting.gitlab.io/opl-csv/bulk-csv.html) and pin it to `board_local` as `"opl-ipf"`. 
+
 
 You can then read the data with `pin_read(board_local(), "opl-ipf")`. 
 
 By means of example, I'll find the max totals for each equipment class:
 
 ```{r}
+
 #pin_opl_ipf()
+
 
 pin_read(board_local(), "opl-ipf") %>%
   dplyr::group_by(equipment) %>%
@@ -43,7 +45,8 @@ pin_read(board_local(), "opl-ipf") %>%
   knitr::kable()
 ```
 
-Similarly, `pin_opl_full()` will grab the full OPL dataset as `"opl-all"`:
+Similarly, `pin_opl_all()` will grab the full OPL dataset as `"opl-all"`:
+
 
 ```{r}
 #pin_opl_all()
