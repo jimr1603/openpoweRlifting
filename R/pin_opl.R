@@ -7,7 +7,6 @@
 #' @param name optional STRING for the name for the pin. Defaults to "opl-ipf" or "opl-all"
 #'
 #' @return Same as pin_write
-#' @export
 #'
 pin_opl =   function(board = pins::board_local(), ipf = TRUE, name = NULL){
 

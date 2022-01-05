@@ -17,6 +17,10 @@ Imports:
     readr,
     utils
 Suggests: 
-    rmarkdown,
-    knitr
-VignetteBuilder: knitr
+    rmarkdown,    
+    knitr,
+    dplyr
+VignetteBuilder: 
+  knitr
+
+
