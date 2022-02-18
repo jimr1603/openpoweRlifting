@@ -8,8 +8,6 @@ pin_opl_full(name = NULL)
 }
 \arguments{
 \item{name}{optional STRING for the name for the pin. Defaults to "opl-ipf" or "opl-all"}
-
-\item{board}{the Board object from {pins} to attach the data to. Defaults to pins::board_local().}
 }
 \value{
 Same as pin_write

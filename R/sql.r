@@ -7,7 +7,7 @@
 #' @param location optional string for the location to store the SQLite DB.
 #' @param name optional STRING for the name for the table. Defaults to "opl-ipf" or "opl-all"
 #'
-#' @return nothing
+#' @return name of the table, invisibly
 #'
 sql_opl =   function(ipf = TRUE,
                      name = NULL,
@@ -56,12 +56,14 @@ sql_opl =   function(ipf = TRUE,
   }
   #read csv by chunks
   readr::read_csv_chunked(data_path,
-                          readr::SideEffectChunkCallback$new(db_callback))
+                          readr::SideEffectChunkCallback$new(db_callback),
+                          progress = FALSE)
 
   ## Cleanup
   con = DBI::dbDisconnect(con)
 
   files = list.files(tmp_dir, recursive = TRUE)
   file.remove(file.path(tmp_dir, files))
+  invisible(name)
 }
 

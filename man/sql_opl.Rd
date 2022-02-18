@@ -15,7 +15,7 @@ sql_opl(ipf = TRUE, name = NULL, location = "~/.local/share/opl")
 \item{location}{optional string for the location to store the SQLite DB.}
 }
 \value{
-nothing
+name of the table, invisibly
 }
 \description{
 Utility function to pin the csv of the latest OpenPowerLifting data

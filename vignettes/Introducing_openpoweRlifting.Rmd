@@ -36,7 +36,7 @@ You can then read the data with TODO: explain sqlite connections.
 By means of example, I'll find the max totals for each equipment class:
 
 ```{r}
-#pin_opl_ipf()
+pin_opl_ipf()
 location = "~/.local/share/opl/"
 con = DBI::dbConnect(RSQLite::SQLite(), file.path(location, "opl-ipf"))
 
@@ -51,7 +51,7 @@ con = DBI::dbDisconnect(con)
 Similarly, `pin_opl_full()` will grab the full OPL dataset as `"opl-all"`:
 
 ```{r}
-#pin_opl_all()
+pin_opl_full()
 
 con = DBI::dbConnect(RSQLite::SQLite(), file.path(location, "opl-all"))
 

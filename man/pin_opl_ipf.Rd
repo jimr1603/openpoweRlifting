@@ -4,11 +4,9 @@
 \alias{pin_opl_ipf}
 \title{Utility function for pinning the latest IPF-only OPL extract.}
 \usage{
-pin_opl_ipf(board = pins::board_local(), name = NULL)
+pin_opl_ipf(name = NULL)
 }
 \arguments{
-\item{board}{the Board object from {pins} to attach the data to. Defaults to pins::board_local().}
-
 \item{name}{optional STRING for the name for the pin. Defaults to "opl-ipf" or "opl-all"}
 }
 \value{

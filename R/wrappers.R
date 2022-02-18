@@ -18,6 +18,6 @@ pin_opl_full = function( name = NULL){
 #' @return Same as pin_write
 #' @export
 #'
-pin_opl_ipf = function(board = pins::board_local(), name = NULL){
+pin_opl_ipf = function(name = NULL){
   sql_opl(ipf = TRUE, name)
 }
