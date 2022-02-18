@@ -3,7 +3,7 @@ title: "Introducing openpoweRlifting"
 output: rmarkdown::html_vignette
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Introducing_openpoweRlifting}
+  %\VignetteIndexEntry{Introducing openpoweRlifting}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,43 +17,49 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(openpoweRlifting)
-library(pins)
+
 ```
 
 openpoweRifting is a library that handles keeping an up-to-date copy of the [OpenPowerlifting](https://www.openpowerlifting.org/) data.
 
-It achieves this with the [pins](https://cran.r-project.org/web/packages/pins/index.html) library, and we would encourage you to read the [intro to pins vignette](https://cran.r-project.org/web/packages/pins/vignettes/pins.html). 
+It used to use {pins}, now uses {sqlite} because too big. "Pin" is a nice verb for 
+what we're doing, so I'm going to keep it.
 
 # Examples
+
 openpoweRlifting has 2 functions - `pin_opl_ipf` and `pin_opl_full`. 
-By default the `pin_opl_ipf` function will grab the [nightly IFP dataset](https://openpowerlifting.gitlab.io/opl-csv/bulk-csv.html) and pin it to `board_local` as `"opl-ipf"`. 
+By default the `pin_opl_ipf` function will grab the [nightly IFP dataset](https://openpowerlifting.gitlab.io/opl-csv/bulk-csv.html) and pin it to 
+the table "opl-ipf" in the SQLite database "~/.local/share/opl/opl.db"
 
-
-You can then read the data with `pin_read(board_local(), "opl-ipf")`. 
+You can then read the data with TODO: explain sqlite connections. 
 
 By means of example, I'll find the max totals for each equipment class:
 
 ```{r}
+pin_opl_ipf()
+location = "~/.local/share/opl/"
+con = DBI::dbConnect(RSQLite::SQLite(), file.path(location, "opl-ipf"))
 
-#pin_opl_ipf()
-
-
-pin_read(board_local(), "opl-ipf") %>%
+dplyr::tbl(con, "opl") %>% 
   dplyr::group_by(equipment) %>%
   dplyr::slice_max(n=1, order_by=total_kg) %>%
   dplyr::ungroup() %>%
   knitr::kable()
+con = DBI::dbDisconnect(con)
 ```
 
-Similarly, `pin_opl_all()` will grab the full OPL dataset as `"opl-all"`:
-
+Similarly, `pin_opl_full()` will grab the full OPL dataset as `"opl-all"`:
 
 ```{r}
-#pin_opl_all()
+pin_opl_full()
 
-pin_read(board_local(), "opl-all") %>%
+con = DBI::dbConnect(RSQLite::SQLite(), file.path(location, "opl-all"))
+
+dplyr::tbl(con, "opl") %>% 
   dplyr::group_by(equipment) %>%
   dplyr::slice_max(n=1, order_by=total_kg) %>%
   dplyr::ungroup() %>%
   knitr::kable()
+
+con = DBI::dbDisconnect(con)
 ```
